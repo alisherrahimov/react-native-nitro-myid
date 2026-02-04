@@ -1,0 +1,17 @@
+{
+  "cxxNamespace": ["nitromyid"],
+  "ios": {
+    "iosModuleName": "NitroMyid"
+  },
+  "android": {
+    "androidNamespace": ["nitromyid"],
+    "androidCxxLibName": "nitromyid"
+  },
+  "autolinking": {
+    "NitroMyid": {
+      "swift": "NitroMyid",
+      "kotlin": "NitroMyid"
+    }
+  },
+  "ignorePaths": ["node_modules"]
+}
