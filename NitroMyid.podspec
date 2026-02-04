@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'React-jsi'
   s.dependency 'React-callinvoker'
+  s.dependency 'MyIdSDK', '~> 3.1.3'
 
   load 'nitrogen/generated/ios/NitroMyid+autolinking.rb'
   add_nitrogen_files(s)

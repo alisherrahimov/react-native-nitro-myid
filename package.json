@@ -1,7 +1,7 @@
 {
   "name": "react-native-nitro-myid",
   "version": "0.1.0",
-  "description": "uzbekistan government systemment system",
+  "description": "High-performance React Native wrapper for MyID SDK - Uzbekistan's biometric identification system",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -46,7 +46,15 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "myid",
+    "uzbekistan",
+    "biometric",
+    "identity",
+    "verification",
+    "kyc",
+    "nitro-modules",
+    "jsi"
   ],
   "repository": {
     "type": "git",

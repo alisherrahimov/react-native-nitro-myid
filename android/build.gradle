@@ -17,6 +17,7 @@ buildscript {
   repositories {
     google()
     mavenCentral()
+    maven { url "https://artifactory.aigroup.uz:443/artifactory/myid" }
   }
 
   dependencies {
@@ -112,7 +113,17 @@ android {
   }
 }
 
+repositories {
+  google()
+  mavenCentral()
+  maven { url "https://artifactory.aigroup.uz:443/artifactory/myid" }
+}
+
 dependencies {
   implementation "com.facebook.react:react-android"
   implementation project(":react-native-nitro-modules")
+  
+  // MyID SDK
+  debugImplementation("uz.myid.sdk.capture:myid-capture-sdk-debug:3.1.5")
+  releaseImplementation("uz.myid.sdk.capture:myid-capture-sdk:3.1.5")
 }
