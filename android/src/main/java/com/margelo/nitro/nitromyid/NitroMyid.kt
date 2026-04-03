@@ -1,9 +1,9 @@
 package com.margelo.nitro.nitromyid
 
-// Import from MyID SDK - main capture classes
-// Import from MyID SDK - model enums
 import android.app.Activity
+import android.app.Application
 import android.graphics.Bitmap
+import android.os.Bundle
 import android.util.Base64
 import androidx.annotation.Keep
 import com.facebook.proguard.annotations.DoNotStrip
@@ -32,11 +32,29 @@ class NitroMyid : HybridNitroMyidSpec(), MyIdResultListener {
 
   private val myIdClient = MyIdClient()
 
-  // Activity reference - should be set before calling start
-  var activity: Activity? = null
+  private val activity: Activity?
+    get() = currentActivity
 
   companion object {
     const val REQUEST_CODE_MY_ID = 1001
+
+    private var currentActivity: Activity? = null
+
+    /**
+     * Call this in your MainApplication.onCreate() to enable automatic Activity tracking.
+     * Example: NitroMyid.init(this)
+     */
+    fun init(application: Application) {
+      application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+        override fun onActivityResumed(activity: Activity) { currentActivity = activity }
+        override fun onActivityPaused(activity: Activity) { if (currentActivity == activity) currentActivity = null }
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+        override fun onActivityStarted(activity: Activity) {}
+        override fun onActivityStopped(activity: Activity) {}
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+        override fun onActivityDestroyed(activity: Activity) { if (currentActivity == activity) currentActivity = null }
+      })
+    }
   }
 
   override fun start(
